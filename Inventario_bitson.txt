@@ -1,0 +1,36 @@
+Lucas:
+
+LowPy
+Antena LoPy
+Display
+2 Sensores de paso
+PyScan
+Antena PyScan
+Antena NFC
+2 Tarjetas NFC
+WiP
+ExpansionBoard
+
+Esteban:
+
+FiPy
+PiTrack
+NFC Arduino
+2 Tarjetas NFC
+Antena del FiPy
+Pack de Relés Arduino
+
+En Bitson
+
+LowPy
+Antena LoPy
+PyScan
+Antena PyScan
+Antena NFC
+2 Tarjetas NFC
+WiP
+ExpansionBoard
+FiPy
+PiTrack
+2 Tarjetas NFC
+Antena del FiPy

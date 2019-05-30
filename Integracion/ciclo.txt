@@ -1,0 +1,9 @@
+1) espero hasta que me apoyen una tarjeta
+2) valido si la tarjeta es valida
+2.1) si es valida espero hasta que el sujeto mueva el sensor de paso
+2.2) si es invalida, aviso y espero una nueva tarjeta
+3)El sensor espera un movimiento por 10 seg aprox
+3.1)si el sensor de paso se movio de derecha a izquierda entro
+3.2)si el sensor de paso se movio de izquierda a derecha salio
+3.3)el timer expiro
+4) vuelta a empezar
