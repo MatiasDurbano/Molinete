@@ -29,13 +29,15 @@ def main():
             print("lectura del sensor: ", lecturaSensor)
             if(lecturaSensor==1):
                 lcd.write_data("Entrada")
-                time.sleep(3)
+                time.sleep(2)
+                pycom.rgbled(0x000000)
             if(lecturaSensor==2):
                 lcd.write_data("Salida")
-                time.sleep(3)
+                time.sleep(2)
+                pycom.rgbled(0x000000)
             if(lecturaSensor==0):
                 lcd.write_data("time out")
-                time.sleep(3)
+                time.sleep(2)
             print("terminando de leer")
             time.sleep(3)
             lcd.write_data("Apoye tarjeta")

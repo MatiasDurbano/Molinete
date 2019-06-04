@@ -12,6 +12,10 @@ class Sensor():
         self.record_active = False
         self.waiting = 0
 
+    def clear(self):
+        self.record_list = [] #vacío lista
+        self.waiting = 0 #El waiting terminó
+
     def listen(self):
         while True:
             #print(self.right_sensor(),self.left_sensor())
@@ -33,6 +37,7 @@ class Sensor():
                     print("izquierda a derecha")
                     pycom.rgbled(0x00ff00)
                     time.sleep(10)
+                    self.clear()
                     return 0
 
                 if (accepts_right(self.record_list)):
@@ -40,7 +45,7 @@ class Sensor():
                     print("derecha a izquierda")
                     pycom.rgbled(0xff0000)
                     time.sleep(10)
+                    self.clear()
                     return 1
 
-                self.record_list = [] #vacío lista
-                self.waiting = 0 #El waiting terminó
+                self.clear()

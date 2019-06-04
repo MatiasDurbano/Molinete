@@ -13,6 +13,10 @@ class Sensor():
         self.record_active = False
         self.waiting = 0
 
+    def clear(self):
+        self.record_list = [] #vacío lista
+        self.waiting = 0 #El waiting terminó
+
     def listen(self):
         cont=0
         print("escuchando")
@@ -37,17 +41,15 @@ class Sensor():
                     print("entre en accept left")
                     print("izquierda a derecha")
                     pycom.rgbled(0x00ff00)
+                    self.clear()
                     return 2
-                    break
-
 
                 if (accepts_right(self.record_list)):
                     print("entre en accept right")
                     print("derecha a izquierda")
                     pycom.rgbled(0xff0000)
+                    self.clear()
                     return 1
-                    break
 
-                self.record_list = [] #vacío lista
-                self.waiting = 0 #El waiting terminó
+                self.clear()
         return 0
