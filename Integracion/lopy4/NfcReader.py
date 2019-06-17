@@ -20,6 +20,7 @@ class NfcReader:
     RGB_GREEN = (RGB_BRIGHTNESS << 8) #valida
     RGB_BLUE = (RGB_BRIGHTNESS) #color predeterminado
 
+    enable=True
 
     def __init__(self):
         self.py = Pyscan()
@@ -30,18 +31,19 @@ class NfcReader:
         return self.VALID_CARDS.count(uid[:len])
 
     def discovery_loop(self):
-        atqa = self.nfc.mfrc630_iso14443a_WUPA_REQA(self.nfc.MFRC630_ISO14443_CMD_REQA)
-        ret = 0
-        if (atqa != 0):
-                # A card has been detected, read UID
-            uid = bytearray(10)
-            uid_len = self.nfc.mfrc630_iso14443a_select(uid)
-            print(self.nfc.format_block(uid, uid_len))
-            if (uid_len > 0):
-                print(uid)
-                    #aca deberia fijarme si la tarjeta es una de las que esta en la bd
-                if (self.check_card(list(uid),uid_len)>0):
-                    ret=1
-                else:
-                    ret=2
-        return ret
+        print("el estado del nfc es: ",self.enable)
+        if self.enable is True:
+            atqa = self.nfc.mfrc630_iso14443a_WUPA_REQA(self.nfc.MFRC630_ISO14443_CMD_REQA)
+            if (atqa != 0):
+                    # A card has been detected, read UID
+                uid = bytearray(10)
+                uid_len = self.nfc.mfrc630_iso14443a_select(uid)
+                print(self.nfc.format_block(uid, uid_len))
+                if (uid_len > 0):
+                    print(uid)
+                        #aca deberia fijarme si la tarjeta es una de las que esta en la bd
+                    return self.nfc.format_block(uid, uid_len)
+
+    def setEnable(self, enable):
+        self.enable=enable
+        print("habilitado: ",self.enable)
